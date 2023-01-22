@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="checkout">
+        <div class="box">
+          <div class="products product1">
+              <img class="img" src="./img/photo1.png" alt="backbag">
+              <div class="product-text">
+                <div>
+                    <h4>Vintage Backbag</h4>
+                    <span>$</span><span class="price">45.99</span> <del>$55</del>
+                </div>
+                <div>
+                  <span class="amount-counter">
+                    <button class="decrease" onclick="decreaseItem(event)"><i class="fa fa-minus"></i></button>
+                    <span class="amount">1</span>
+                    <button class="increase" onclick="increaseItem(event)"><i class="fa fa-plus"></i></button>
+                  </span>
+                  <div><button class="btn-remove" onclick="removeItem(event)">Remove</button></div>
+                  <div class="ProductTotal">
+                  <span id="bag-product" class="product-total" >Product Total: <span>$</span><span class="product-price">0</span>   </span>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="products product2">
+            <img class="img" src="./img/photo2.png" alt="backbag">
+            <div class="product-text">
+              <div>
+                  <h4>Levi Shoes</h4>
+                 <span>$</span><span class="price">34.99</span> <del>$45</del>
+              </div>
+              <div>
+                <span class="amount-counter">
+                  <button class="decrease" onclick="decreaseItem(event)"><i class="fa fa-minus"></i></button>
+                   <span class="amount">1</span>
+                   <button class="increase" onclick="increaseItem(event)"><i class="fa fa-plus"></i></button>
+                </span>
+                <div><button class="btn-remove" onclick="removeItem(event)">Remove</button></div>
+          <div class="ProductTotal">
+            <span id="shoes" class="product-total">Product Total: <span>$</span><span class="product-price">0</span>   </span>
+          </div>
+              </div>
+            </div>
+          </div>
+          <div class="products product3">
+            <img class="img" src="./img/photo3.jpg" alt="shoes">
+            <div class="product-text">
+              <div>
+                  <h4>Antique Clock</h4>
+                  <span>$</span><span class="price">70.99</span>
+                </span>
+                </span> <del>$96</del>
+              </div>
+              <div>
+                <span class="amount-counter">
+                  <button class="decrease" onclick="decreaseItem(event)"><i class="fa fa-minus"></i></button>
+                   <span class="amount">1</span>
+                   <button class="increase" onclick="increaseItem(event)"><i class="fa fa-plus"></i></button>
+                </span>
+                <div><button class="btn-remove" onclick="removeItem(event)">Remove</button></div>
+          <div class="ProductTotal">
+            <span id="clock" class="product-total">Product Total: <span>$</span><span class="product-price">0</span>   </span>
+          </div>
+              </div>
+            </div>
+          </div>
+          <div class="bottomPart">
+          <span  class="subtotal">Subtotal</span>
+          <span>$<span id="subTotal" class="bottom-subtotal-price" >0</span> </span>
+          </div>
+          <div class="bottomPart">
+            <span  class="bottom-subtotal">Tax %18</span>
+            <span>$<span id="tax" class="bottom-tax-price">0</span></span>
+          </div>
+          <div class="bottomPart">
+            <span class="bottom-subtotal">Shipping</span>
+            <span>$<span id="shipping"  class="bottom-shipping-price">15</span></span>
+          </div>
+          <div class="bottomPart">
+            <span id="total" class="bottom-subtotal">Total</span>
+            <span>$<span  class="bottom-total-price">0</span></span>
+            <script src="app.js"></script>
+          </div>
+      </div>
+    </div>
+</body>
+</html>
