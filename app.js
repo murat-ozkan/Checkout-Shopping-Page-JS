@@ -1,43 +1,66 @@
-// let subtotalArea = document.querySelector(".bottom-subtotal-price"); //getElementClassName çalışmadı
-// subtotalArea.innerText = 0;
-// let taxArea = document.querySelector(".bottom-tax-price");
-// taxArea.innerText = 0;
-// let shippingArea = document.querySelector(".bottom-shipping-price");
-// shippingArea.innerText = 0;
-// let totalPriceArea = document.querySelector(".bottom-total-price");
-// totalPriceArea.innerText = 0;
-// let totalProductPrice = document.querySelector(".product-price");
-// totalProductPrice.innerText = 0;
+let total = document.querySelector(".bottom-total-price");
+let shipping = document.querySelector(".bottom-shipping-price");
+let tax = document.querySelector(".bottom-tax-price");
+let subtotal = document.querySelector(".bottom-subtotal-price");
 
-function increaseItem(event) {
-  let quantity = event.currentTarget.previousElementSibling.innerText;
-  quantity++;
-  event.currentTarget.previousElementSibling.innerText = quantity;
+let productPrice;
+let productTotalPrice;
+let remove;
+let decrease;
+let increase;
 
-  let itemPrice = event.currentTarget
-    .closest("div")
-    .previousElementSibling.querySelector(".price").innerText;
+// var elements = document.getElementsByClassName("deneme");
+// for (var i = 0; i < elements.length; i++) {
+//   elements[i].addEventListener("click", function () {
+//     alert("Hello World!");
+//   });
+// }
 
-  let totalProductPrice = Number(quantity * itemPrice).toFixed(2);
-  event.currentTarget.closest(
-    "span"
-  ).nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.innerText =
-    totalProductPrice;
-  subTotalCalc();
-}
+// document.getElementsByClassName("deneme")[0].addEventListener("click", function () {
+//     alert("Hello World!");
+// });
 
-function decreaseItem(event) {
-  let quantity = event.currentTarget.nextElementSibling.innerText;
-  if (quantity > 1) {
-    quantity--;
-    event.currentTarget.nextElementSibling.innerText = quantity;
-  }
-}
+document.querySelectorAll(".deneme")[2].addEventListener("click", function () {
+  console.log("merhaba");
+});
 
-function removeItem(event) {
-  let item = event.currentTarget.closest(".products");
-  item.remove();
-}
+// function increaseItem(event) {
+//   let quantity = event.currentTarget.previousElementSibling.innerText;
+//   quantity++;
+//   event.currentTarget.previousElementSibling.innerText = quantity;
+
+//   productPrice = event.currentTarget
+//     .closest("div")
+//     .previousElementSibling.querySelector(".price").innerText;
+
+//   let totalProductPrice = Number(quantity * productPrice).toFixed(2);
+//   event.currentTarget.closest(
+//     "span"
+//   ).nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.innerText =
+//     totalProductPrice;
+// }
+
+// function decreaseItem(event) {
+//   let quantity = event.currentTarget.nextElementSibling.innerText;
+//   if (quantity > 1) {
+//     quantity--;
+//     event.currentTarget.nextElementSibling.innerText = quantity;
+//   }
+// }
+
+// function removeItem(event) {
+//   let item = event.currentTarget.closest(".products");
+//   item.remove();
+// }
+
+//   let sumofProductPrices = document.querySelectorAll(".product-price");
+//   let total = 0;
+//   for (let price of sumofProductPrices) {
+//     console.log(price);
+//     // total += Number(price.innerText).toFixed(2);
+//   }
+// //   console.log(total);
+// }
 
 // let totalProductPrices = document.querySelectorAll(".product-price").values;
 // console.log(totalProductPrices);
@@ -46,19 +69,21 @@ function removeItem(event) {
 // total += span
 // })
 
-const totalPrice = document.querySelector(".bottom-total-price");
+// const totalPrice = document.querySelector(".bottom-total-price");
 
-let bottomTotalPrice = document.querySelector(".bottom-total-price").innerText;
+// let bottomTotalPrice = document.querySelector(".bottom-total-price").innerText;
 
-console.log(bottomTotalPrice);
+// console.log(bottomTotalPrice);
+
+// let subTotalPrice = document.querySelector(".bottom-subtotal-price").innerText;
+// console.log(subTotalPrice);
+
+// let totalProductPrices = document.querySelectorAll(".product-price").innerText;
+// console.log(totalProductPrices);
 
 // function subTotalCalc() {
-//   let subTotalPrice = document.querySelector(
-//     ".bottom-subtotal-price"
-//   ).innerText;
-//   console.log(subTotalPrice);
-//   let subTotal = Number(subTotalPrice + 2).toFixed(2);
-//   return subTotal;
+//   subTotalPrice.innerText = 500;
+//   console.log(subTotal);
 // }
 
 // console.log(subTotal);

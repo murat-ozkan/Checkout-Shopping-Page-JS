@@ -1,52 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script
+      src="https://kit.fontawesome.com/7b322a3ff8.js"
+      crossorigin="anonymous"
+    ></script>
+  
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="checkout">
+    <title>Checkout Page</title>
+  </head>
+  <body>
+    <header>
+    <h1>Checkout Page</h1>
+    </header>
+    <main class="main" >
+     
+        <div  class="container">
+          <div class="container-left">
+              <h2>Contact information</h2>
+                <form id="form" class="form">
+              <div class="form-control">
+                  <div class="form-control">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email" id="email" />
+                    <i id="visiblei" class="fa fa-envelope" aria-hidden="true"></i>
+                    <i id="wrong" class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error message</small>
+                  </div>
+                  <div class="form-control">
+                    <label>Phone</label>
+                    <input type="number" placeholder="Enter your phone..." id="phone" />
+                    <i id="visiblei" class="fa-solid fa-phone"></i>
+                    <i id="wrong" class="fa-solid fa-circle-exclamation"></i>
+                    <small>Error message</small>
+                  </div>
+                  <div class="Shipping address">
+            <h2>Shipping Adress</h2>
+          <div class="form-control">
+            <label>Full name</label>
+            <input type="text" placeholder="Enter your Full name" id="username" />
+            <i id="visiblei" class="fa-solid fa-check-circle"></i>
+            <i id="wrong" class="fa-solid fa-circle-exclamation"></i>
+            <small>Error message</small>
+          </div>
+          <div class="form-control">
+            <label>Address</label>
+            <input type="text" placeholder="Enter your adress..." id="adress" />
+            <i id="visiblei"  class="fa-solid fa-house-chimney"></i>
+            <i id="wrong" class="fa-solid fa-circle-exclamation"></i>
+            <small>Error message</small>
+          </div>
+
+          <div class="form-control">
+            <label>Enter your city...</label>
+            <input type="text" placeholder="Enter your city..." id="city" />
+            <i id="visiblei" class="fa-solid fa-city"></i>
+            <i id="wrong" class="fa-solid fa-circle-exclamation"></i>
+            <small>Error message</small>
+          </div>
+          
+          <div class="form-control">
+            <div class="post-control">
+            <span class="country">
+            <label>Country </label><br> <span><i  id="globe" class="fa-solid fa-earth-americas"></i></span>
+            <select >
+                <option value="usa" name="usa" id="usa">United States</option>
+                <option value="Germany" name="Germany" id="Germany">
+                  Germany
+                </option>
+                <option value="Spain" name="Spain" id="Spain">
+                  Spain
+                </option>
+                <option value="Turkey" name="Turkey" id="Turkey">Turkey</option>
+              </select>
+            </span>
+            <span class="postCode">
+                <label>Post Code</label>
+                <br>
+                <input type="number" placeholder="Enter your postal code..." id="postalcode" />
+                <i id="visiblei-postal"  class="fa-solid fa-envelopes-bulk"></i>
+                <i id="wrong" class="fa-solid fa-circle-exclamation"></i>
+                <small>Error message</small>
+            </span>
+             </div>
+          </div>
+
+          <button id="btnContinue" >Continue</button>
+                  </div>
+            </form>
+          </div>
+        </div>
+    
+
+
+      <div class="checkout">
         <div class="box">
           <div class="products product1">
               <img class="img" src="./img/photo1.png" alt="backbag">
               <div class="product-text">
                 <div>
-                    <h4>Vintage Backbag</h4>
+                    <h4>Vintage Backpack</h4>
                     <span>$</span><span class="price">45.99</span> <del>$55</del>
-                </div>
+                </div> 
                 <div>
                   <span class="amount-counter">
-                    <button class="decrease" onclick="decreaseItem(event)"><i class="fa fa-minus"></i></button>
-                    <span class="amount">1</span>
-                    <button class="increase" onclick="increaseItem(event)"><i class="fa fa-plus"></i></button>
+                    <button class="decrease"><i class="fa fa-minus"></i></button>
+                     <span class="amount">1</span>
+                     <button class="increase"><i class="fa fa-plus"></i></button>
                   </span>
-                  <div><button class="btn-remove" onclick="removeItem(event)">Remove</button></div>
+                  <div><button class="btn-remove">Remove</button></div>
                   <div class="ProductTotal">
-                  <span id="bag-product" class="product-total" >Product Total: <span>$</span><span class="product-price">0</span>   </span>
+                  <span id="bag-product" class="product-total" >Product Total: <span>$</span><span class="product-price">45.99</span>   </span>
                   </div>
                 </div>
               </div>
           </div>
+
           <div class="products product2">
             <img class="img" src="./img/photo2.png" alt="backbag">
             <div class="product-text">
               <div>
                   <h4>Levi Shoes</h4>
                  <span>$</span><span class="price">34.99</span> <del>$45</del>
-              </div>
+              </div> 
               <div>
                 <span class="amount-counter">
-                  <button class="decrease" onclick="decreaseItem(event)"><i class="fa fa-minus"></i></button>
+                  <button class="decrease"><i class="fa fa-minus"></i></button>
                    <span class="amount">1</span>
-                   <button class="increase" onclick="increaseItem(event)"><i class="fa fa-plus"></i></button>
+                   <button class="increase"><i class="fa fa-plus"></i></button>
                 </span>
-                <div><button class="btn-remove" onclick="removeItem(event)">Remove</button></div>
+                <div><button class="btn-remove">Remove</button></div>
           <div class="ProductTotal">
-            <span id="shoes" class="product-total">Product Total: <span>$</span><span class="product-price">0</span>   </span>
+            <span id="shoes" class="product-total">Product Total: <span>$</span><span class="product-price">34.99</span>   </span>
           </div>
               </div>
             </div>
@@ -59,27 +148,28 @@
                   <span>$</span><span class="price">70.99</span>
                 </span>
                 </span> <del>$96</del>
-              </div>
+              </div> 
               <div>
                 <span class="amount-counter">
-                  <button class="decrease" onclick="decreaseItem(event)"><i class="fa fa-minus"></i></button>
+                  <button class="decrease"><i class="fa fa-minus"></i></button>
                    <span class="amount">1</span>
-                   <button class="increase" onclick="increaseItem(event)"><i class="fa fa-plus"></i></button>
+                   <button class="increase"><i class="fa fa-plus"></i></button>
                 </span>
-                <div><button class="btn-remove" onclick="removeItem(event)">Remove</button></div>
+                <div><button class="btn-remove">Remove</button></div>
           <div class="ProductTotal">
-            <span id="clock" class="product-total">Product Total: <span>$</span><span class="product-price">0</span>   </span>
+            <span id="clock" class="product-total">Product Total: <span>$</span><span class="product-price">70.99</span>   </span>
           </div>
               </div>
             </div>
           </div>
+          <div class="bottom-container">
           <div class="bottomPart">
           <span  class="subtotal">Subtotal</span>
-          <span>$<span id="subTotal" class="bottom-subtotal-price" >0</span> </span>
+          <span>$<span id="subTotal" class="bottom-subtotal-price" >151.97</span> </span>
           </div>
           <div class="bottomPart">
             <span  class="bottom-subtotal">Tax %18</span>
-            <span>$<span id="tax" class="bottom-tax-price">0</span></span>
+            <span>$<span id="tax" class="bottom-tax-price">27.35</span></span>
           </div>
           <div class="bottomPart">
             <span class="bottom-subtotal">Shipping</span>
@@ -87,10 +177,13 @@
           </div>
           <div class="bottomPart">
             <span id="total" class="bottom-subtotal">Total</span>
-            <span>$<span  class="bottom-total-price">0</span></span>
-            <script src="app.js"></script>
+            <span>$<span  class="bottom-total-price">194.32</span></span>
           </div>
+        </div>
       </div>
     </div>
-</body>
+    </main>
+  
+    <script src="app.js"></script>
+  </body>
 </html>
