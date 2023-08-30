@@ -1,97 +1,113 @@
-let total = document.querySelector(".bottom-total-price");
-let shipping = document.querySelector(".bottom-shipping-price");
-let tax = document.querySelector(".bottom-tax-price");
-let subtotal = document.querySelector(".bottom-subtotal-price");
+// const taxRate = 0.18;
+// const shippingPrice = 15;
+// const shippingFreePrice = 300;
 
-let productPrice;
-let productTotalPrice;
-let remove;
-let decrease;
-let increase;
+window.addEventListener("load", () => {
+  //   localStorage.setItem("taxRate", taxRate);
+  //   localStorage.setItem("shippingPrice", shippingPrice);
+  //   localStorage.setItem("shippingFreePrice", shippingFreePrice);
 
-// var elements = document.getElementsByClassName("deneme");
-// for (var i = 0; i < elements.length; i++) {
-//   elements[i].addEventListener("click", function () {
-//     alert("Hello World!");
-//   });
-// }
-
-// document.getElementsByClassName("deneme")[0].addEventListener("click", function () {
-//     alert("Hello World!");
-// });
-
-document.querySelectorAll(".deneme")[2].addEventListener("click", function () {
-  console.log("merhaba");
+  //show chart totals on window load!
+  calculateCartPrice();
 });
 
-// function increaseItem(event) {
-//   let quantity = event.currentTarget.previousElementSibling.innerText;
-//   quantity++;
-//   event.currentTarget.previousElementSibling.innerText = quantity;
+const productsDiv = document.querySelector(".products");
+//Capturing ==> Static closest Parent ------> Children
+productsDiv.addEventListener("click", (e) => {
+  //e.target vs. e.currentTarget
+  // alert(e.target.tagName);
+  // alert(e.currentTarget.className);
+  if (e.target.className === "fa-solid fa-minus") {
+    // alert("minus btn clicked");
+    if (e.target.nextElementSibling.innerText > 1) {
+      e.target.nextElementSibling.innerText--;
+      calculateProductPrice(e.target);
+    } else {
+      //innerText vs. textContent(whitespaces)
+      if (
+        confirm(
+          `${
+            e.target.closest(".product-info").querySelector("h2").innerText
+          } will be removed!`
+        )
+      ) {
+        e.target.closest(".product").remove();
+      }
+    }
+    calculateCartPrice();
+  } else if (e.target.classList.contains("fa-plus")) {
+    // alert("plus btn clicked");
+    e.target.parentElement.querySelector(".quantity").innerText++;
+    calculateProductPrice(e.target);
+    calculateCartPrice();
+  } else if (e.target.getAttribute("class") == "remove-product") {
+    // alert("remove btn clicked");
+    if (
+      confirm(
+        `${
+          e.target.closest(".product-info").querySelector("h2").innerText
+        } will be removed!`
+      )
+    ) {
+      e.target.closest(".product").remove();
+    }
+    calculateCartPrice();
+  }
+});
 
-//   productPrice = event.currentTarget
-//     .closest("div")
-//     .previousElementSibling.querySelector(".price").innerText;
+const calculateProductPrice = (target) => {
+  //each product total calculation
+  //productTotalPrice => quantity * price
+  const productInfoDiv = target.closest(".product-info");
+  console.log(productInfoDiv);
+  //unit price
+  //div.class vs. .class as performance
+  const price = productInfoDiv.querySelector(
+    "div.product-price strong"
+  ).innerText;
+  //quantity
+  const quantity = productInfoDiv.querySelector("p.quantity").innerText;
+  productInfoDiv.querySelector("div.product-line-price").innerText = (
+    price * quantity
+  ).toFixed(2);
+};
 
-//   let totalProductPrice = Number(quantity * productPrice).toFixed(2);
-//   event.currentTarget.closest(
-//     "span"
-//   ).nextElementSibling.nextElementSibling.lastElementChild.lastElementChild.innerText =
-//     totalProductPrice;
-// }
+const calculateCartPrice = () => {
+  //cart total calculation from all products
+  //NodeList
+  const productLinePriceDivs = document.querySelectorAll(".product-line-price");
+  // const productLinePriceDivs = document.getElementsByClassName("product-line-price");
 
-// function decreaseItem(event) {
-//   let quantity = event.currentTarget.nextElementSibling.innerText;
-//   if (quantity > 1) {
-//     quantity--;
-//     event.currentTarget.nextElementSibling.innerText = quantity;
-//   }
-// }
+  //reduce vs. foreach !!!!! homework!!
+  let subtotal = 0;
+  //forEach => array + nodeList
+  productLinePriceDivs.forEach((div) => {
+    subtotal += parseFloat(div.innerText);
+  });
+  console.log(subtotal);
 
-// function removeItem(event) {
-//   let item = event.currentTarget.closest(".products");
-//   item.remove();
-// }
+  const taxPrice = subtotal * localStorage.getItem("taxRate");
+  console.log(taxPrice);
 
-//   let sumofProductPrices = document.querySelectorAll(".product-price");
-//   let total = 0;
-//   for (let price of sumofProductPrices) {
-//     console.log(price);
-//     // total += Number(price.innerText).toFixed(2);
-//   }
-// //   console.log(total);
-// }
+  const shippingPrice = parseFloat(
+    subtotal > 0 && subtotal < localStorage.getItem("shippingFreePrice")
+      ? localStorage.getItem("shippingPrice")
+      : 0
+  );
+  console.log(shippingPrice);
 
-// let totalProductPrices = document.querySelectorAll(".product-price").values;
-// console.log(totalProductPrices);
+  const totalPrice = subtotal + taxPrice + shippingPrice;
+  console.log(totalPrice);
 
-// totalProductPrices.forEach(span => {
-// total += span
-// })
+  document.querySelector("#cart-subtotal").lastElementChild.innerText =
+    subtotal.toFixed(2);
 
-// const totalPrice = document.querySelector(".bottom-total-price");
+  document.getElementById("cart-tax").children[1].innerText =
+    taxPrice.toFixed(2);
 
-// let bottomTotalPrice = document.querySelector(".bottom-total-price").innerText;
+  document.querySelector("#cart-shipping p:nth-child(2)").innerText =
+    shippingPrice.toFixed(2);
 
-// console.log(bottomTotalPrice);
-
-// let subTotalPrice = document.querySelector(".bottom-subtotal-price").innerText;
-// console.log(subTotalPrice);
-
-// let totalProductPrices = document.querySelectorAll(".product-price").innerText;
-// console.log(totalProductPrices);
-
-// function subTotalCalc() {
-//   subTotalPrice.innerText = 500;
-//   console.log(subTotal);
-// }
-
-// console.log(subTotal);
-
-// function subTotalPrice(deger) {
-//   let subTotalPrice = Number(
-//     subtotalArea.innerText + deger
-//   ).toFixed(2);
-//   subtotalArea.innerText = subTotalPrice;
-//   console.log(subTotalPrice);
-// }
+  document.querySelector("#cart-total p:last-child").innerText =
+    totalPrice.toFixed(2);
+};
